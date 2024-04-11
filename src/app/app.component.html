@@ -1,0 +1,130 @@
+<!--Content wrapper-->
+<link rel="preconnect" href="https://raw.githubusercontent.com">
+
+
+<!--Dark mode enabled-->
+
+<div>
+<!--  <div>-->
+<!--    <div> &lt;!&ndash; Start Nav &ndash;&gt;-->
+<!--      <nav>-->
+<!--        <div>-->
+<!--          <h1>-->
+<!--            <a href="/"> Pokemon Information</a>-->
+<!--          </h1>-->
+<!--        </div>-->
+<!--        <ul>-->
+<!--          <li>-->
+<!--            <a href="#">-->
+<!--              <span>Home</span>-->
+<!--            </a>-->
+<!--          </li>-->
+<!--          <li>-->
+<!--            <a href="#">-->
+<!--              <span>About</span>-->
+<!--            </a>-->
+<!--          </li>-->
+<!--          <li>-->
+<!--            <a href="#">-->
+<!--              <span>Contact</span>-->
+<!--            </a>-->
+<!--          </li>-->
+<!--        </ul>-->
+<!--      </nav>-->
+<!--    </div> &lt;!&ndash; End Nav &ndash;&gt;-->
+
+<!--    <main *ngIf="data">-->
+<!--      <div>-->
+<!--        <a href="#"> Log In</a>-->
+<!--        <a href="#"> Sign Up</a>-->
+<!--      </div>-->
+<!--      <br>-->
+<!--      <header>-->
+<!--        <h2> Pokemon Name: {{data.name}} </h2>-->
+<!--        <h3> Base Stat Total: {{totalBaseStats}} </h3>-->
+<!--      </header>-->
+<!--      <div>-->
+<!--        <h4> Current Pokemon </h4>-->
+<!--        <div>-->
+<!--          <div>-->
+<!--            <img src="{{pokemonImage}}" alt="">-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div>-->
+<!--        <div>-->
+<!--          Load Another Pokemon-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </main>-->
+<!--  </div>-->
+
+<!--  <br>-->
+<!--  <br>-->
+<!--  <br>-->
+
+<!--  State management with a counter-->
+<!--  <app-my-counter></app-my-counter>-->
+
+<!--  <br>-->
+<!--  <br>-->
+<!--  <br>-->
+
+  <!--  State management with a pokemon -->
+<!--  <ng-container *ngIf="data">-->
+<!--    <app-pokemon></app-pokemon>-->
+<!--  </ng-container>-->
+
+<!--  <br>-->
+<!--  <br>-->
+<!--  <br>-->
+  <div class="capitalize text-gray-500 text-lg">
+    <h1 class="text-4xl text-gray-600 font-bold uppercase p-4 boarder-b boarder-gray-100">pokemon data</h1>
+
+    <div *ngIf="data" class="px-16 py-6">
+
+      <h2 class="font-bold text-xl border-b boarder-gray-200">{{data.name}}</h2>
+      <h3 class="font-semibold pb-2">base stat total: {{totalBaseStats}}</h3>
+
+      <div class="mt-8 pb-8">
+        <img ngSrc="{{pokemonImage}}" width="150" height="150" priority alt="{{pokemonImage}}">
+      </div>
+
+      <!--Table element-->
+      <div class="pb-2">
+        <mat-card >
+          <mat-card-content>
+            <div class="example-container mat-elevation-z8">
+              <mat-table [dataSource]="dataSource.data.stats">
+
+                <div matColumnDef="pokemonBaseStatName">
+                  <mat-header-cell *matHeaderCellDef class="font-bold">Stat </mat-header-cell>
+                  <mat-cell *matCellDef="let element" class="capitalize-first-letter"> {{element.stat.name}} </mat-cell>
+                </div>
+
+                <div matColumnDef="pokemonBaseStat">
+                  <mat-header-cell *matHeaderCellDef class="font-bold"> Base Stat</mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.base_stat}} </mat-cell>
+                </div>
+
+                <mat-header-row *matHeaderRowDef="displayedColumnStats"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumnStats;"></mat-row>
+
+              </mat-table>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <br>
+
+      <div>
+        <button (click)="loadPokemon()" class="capitalize text-lg bg-secondary-100 text-secondary-200">load another pokemon</button>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
