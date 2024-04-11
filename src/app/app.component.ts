@@ -3,6 +3,7 @@ import { DataService } from "./data.service";
 import {
   MatTableDataSource
 } from "@angular/material/table";
+import {createConsoleLogger} from "@angular-devkit/core/node";
 
 @Component({
   selector: 'app-root',
@@ -34,21 +35,18 @@ export class AppComponent implements OnInit {
       this.data = response;
       this.dataSource = new MatTableDataSource(this.data);
       this.dataSource.data.stats.forEach((el:any) => this.totalBaseStats += el.base_stat);
-      console.log(this.totalBaseStats);
+      console.log(this.seenPokemon);
       this.pokemonImage = this.data.sprites.front_default;
       this.addSeenPokemon(this.data.name, this.totalBaseStats);
+
+
+      console.log("current pokemon: " + this.seenPokemon.at(this.seenPokemon.length-1).pokemonName);
+      console.log("total base stats: " + this.totalBaseStats);
+      console.log("length of seen pokemon list " + this.seenPokemon.length);
+      console.log("______________________________")
+
+
     });
-
-    if(this.seenPokemon.length+1 > 1){
-      console.log(this.seenPokemon);
-      const value = this.seenPokemon.slice(-1);
-      console.log("Sliced Value: ");
-      console.log(value);
-      this.totalBaseStats = value.values().next().value;
-    }
-
   }
-
-
 
 }
