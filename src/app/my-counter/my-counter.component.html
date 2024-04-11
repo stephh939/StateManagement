@@ -1,7 +1,10 @@
-<button (click)="increment()">Increment</button>
 
-<div>Current Count: {{ count$ | async }}</div>
+<div>
+  <p class="text-4xl text-gray-600 font-bold uppercase p-4 boarder-b boarder-gray-100">
+    Current Count: {{ count$ | async }}
+  </p>
+</div>
 
-<button (click)="decrement()">Decrement</button>
-
-<button (click)="reset()">Reset Counter</button>
+<button (click)="increment()" class="px-4 py-1 font-semibold">Increment</button>
+<button (click)="decrement()" class="px-4 py-1 font-semibold">Decrement</button>
+<button (click)="reset()" class="px-4 py-1 font-semibold">Reset Counter</button>
